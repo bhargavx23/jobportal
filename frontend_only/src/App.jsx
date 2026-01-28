@@ -9,6 +9,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ManageJobs from "./pages/ManageJobs";
 import ManageUsers from "./pages/ManageUsers";
 import CreateJob from "./pages/CreateJob";
+import EditJob from "./pages/EditJob";
 import ReviewApplications from "./pages/ReviewApplications";
 import ReviewJobApplications from "./pages/ReviewJobApplications";
 import ApplicationDetails from "./pages/ApplicationDetails";
@@ -78,6 +79,16 @@ const App = () => {
         element={
           <ProtectedRoute adminOnly={true}>
             <ManageJobs />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Edit existing job */}
+      <Route
+        path="/admin/jobs/:id/edit"
+        element={
+          <ProtectedRoute adminOnly={true}>
+            <EditJob />
           </ProtectedRoute>
         }
       />
