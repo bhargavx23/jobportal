@@ -1,0 +1,66 @@
+# Project Root .gitignore
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+
+# Environment variables (DO NOT COMMIT)
+.env
+.env.local
+.env.*.local
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+out/
+.next
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Archive files (reduce repo size)
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Uploaded files
+uploads/
+public/uploads/
+*.pdf
+*.doc
+*.docx
+
+# Temporary files
+*.tmp
+temp/
+.cache
+
+# Testing
+coverage/
+.coverage
+
+# Package lock (optional - include if you want consistency)
+# package-lock.json
+# yarn.lock
