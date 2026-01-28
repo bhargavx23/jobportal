@@ -92,7 +92,7 @@ Before running this application, make sure you have the following installed:
    npm run dev
    ```
 
-   The backend will run on `http://localhost:3001`.
+   The backend will run on `https://jobportal-995j.onrender.com`.
 
 2. Start the frontend development server:
 

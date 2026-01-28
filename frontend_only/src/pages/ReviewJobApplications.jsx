@@ -50,7 +50,7 @@ const ReviewJobApplications = () => {
 
       // Fetch job details
       const jobResponse = await axios.get(
-        `http://localhost:3001/api/jobs/${jobId}`,
+        `https://jobportal-995j.onrender.com/api/jobs/${jobId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -59,7 +59,7 @@ const ReviewJobApplications = () => {
 
       // Fetch applications for this job
       const appResponse = await axios.get(
-        `http://localhost:3001/api/applications/job/${jobId}`,
+        `https://jobportal-995j.onrender.com/api/applications/job/${jobId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -95,7 +95,7 @@ const ReviewJobApplications = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3001/api/applications/${applicationId}/status`,
+        `https://jobportal-995j.onrender.com/api/applications/${applicationId}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },

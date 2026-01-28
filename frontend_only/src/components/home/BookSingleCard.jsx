@@ -27,7 +27,7 @@ const BookSingleCard = ({ book }) => {
         <div className="flex justify-start items-start gap-x-3 mb-3">
           {book.image ? (
             <img
-              src={`http://localhost:3001/uploads/${book.image}`}
+              src={`https://jobportal-995j.onrender.com/uploads/${book.image}`}
               alt={book.title}
               className="w-12 h-16 sm:w-16 sm:h-24 object-cover rounded-lg shadow-md flex-shrink-0"
             />

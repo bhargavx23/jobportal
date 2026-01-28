@@ -40,7 +40,9 @@ const ApplyJob = () => {
   const fetchJobDetails = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3001/api/jobs/${id}`);
+      const response = await axios.get(
+        `https://jobportal-995j.onrender.com/api/jobs/${id}`,
+      );
       setJob(response.data);
     } catch (error) {
       console.log(error);
@@ -107,12 +109,16 @@ const ApplyJob = () => {
       submitData.append("additionalInfo", formData.additionalInfo);
 
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:3001/api/applications", submitData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
+      await axios.post(
+        "https://jobportal-995j.onrender.com/api/applications",
+        submitData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
 
       setSuccess(true);
       setTimeout(() => {

@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3001/api/jobs")
+      .get("https://jobportal-995j.onrender.com/api/jobs")
       .then((response) => {
         const jobsData =
           response.data.data || response.data.jobs || response.data;

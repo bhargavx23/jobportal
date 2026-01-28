@@ -68,7 +68,7 @@ export default function AdminDashboard() {
 
         // Fetch all jobs
         const jobsRes = await axios.get(
-          "http://localhost:3001/api/admin/jobs?limit=1000",
+          "https://jobportal-995j.onrender.com/api/admin/jobs?limit=1000",
           {
             headers: token ? { Authorization: `Bearer ${token}` } : {},
           },
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
         let usersData = [];
         try {
           const usersRes = await axios.get(
-            "http://localhost:3001/api/admin/users?limit=1000",
+            "https://jobportal-995j.onrender.com/api/admin/users?limit=1000",
             {
               headers: token ? { Authorization: `Bearer ${token}` } : {},
             },
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
         let applicationsData = [];
         try {
           const applicationsRes = await axios.get(
-            "http://localhost:3001/api/admin/applications",
+            "https://jobportal-995j.onrender.com/api/admin/applications",
             {
               headers: token ? { Authorization: `Bearer ${token}` } : {},
             },
@@ -138,9 +138,12 @@ export default function AdminDashboard() {
   const handleDeleteJob = async (jobId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3001/api/jobs/${jobId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://jobportal-995j.onrender.com/api/jobs/${jobId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setJobs(jobs.filter((job) => job._id !== jobId));
       setDeleteConfirm(null);
       setDeleteType(null);
@@ -153,9 +156,12 @@ export default function AdminDashboard() {
   const handleDeleteUser = async (userId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3001/api/admin/users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://jobportal-995j.onrender.com/api/admin/users/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setUsers(users.filter((user) => user._id !== userId));
       setDeleteConfirm(null);
       setDeleteType(null);
@@ -169,7 +175,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `http://localhost:3001/api/admin/applications/${applicationId}`,
+        `https://jobportal-995j.onrender.com/api/admin/applications/${applicationId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -187,7 +193,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3001/api/admin/applications/${applicationId}/status`,
+        `https://jobportal-995j.onrender.com/api/admin/applications/${applicationId}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -45,7 +45,7 @@ const ReviewApplications = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:3001/api/admin/applications",
+        "https://jobportal-995j.onrender.com/api/admin/applications",
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -86,7 +86,7 @@ const ReviewApplications = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3001/api/applications/${applicationId}/status`,
+        `https://jobportal-995j.onrender.com/api/applications/${applicationId}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -493,7 +493,7 @@ const ReviewApplications = () => {
                       <div>
                         <p className="text-sm text-gray-600 mb-1">Resume</p>
                         <a
-                          href={`http://localhost:3001/uploads/${selectedApplication.resume}`}
+                          href={`https://jobportal-995j.onrender.com/uploads/${selectedApplication.resume}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-purple-600 hover:text-purple-800"

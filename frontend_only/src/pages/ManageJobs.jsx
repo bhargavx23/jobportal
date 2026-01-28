@@ -43,7 +43,7 @@ const ManageJobs = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:3001/api/admin/jobs?limit=1000",
+        "https://jobportal-995j.onrender.com/api/admin/jobs?limit=1000",
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -81,9 +81,12 @@ const ManageJobs = () => {
   const handleDeleteJob = async (jobId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3001/api/jobs/${jobId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://jobportal-995j.onrender.com/api/jobs/${jobId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
 
       setJobs(jobs.filter((job) => job._id !== jobId));
       setDeleteConfirm(null);
@@ -284,7 +287,7 @@ const ManageJobs = () => {
                         <div className="flex items-center gap-3">
                           {job.companyLogo ? (
                             <img
-                              src={`http://localhost:3001/uploads/${job.companyLogo}`}
+                              src={`https://jobportal-995j.onrender.com/uploads/${job.companyLogo}`}
                               alt={job.company}
                               className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
                             />

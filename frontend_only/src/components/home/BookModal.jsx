@@ -37,7 +37,7 @@ const BookModal = ({ book, onClose }) => {
           >
             {book.image ? (
               <img
-                src={`http://localhost:3001/uploads/${book.image}`}
+                src={`https://jobportal-995j.onrender.com/uploads/${book.image}`}
                 alt={book.title}
                 className="w-20 h-20 object-cover rounded-full mx-auto mb-4 shadow-lg"
               />

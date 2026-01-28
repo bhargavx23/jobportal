@@ -34,7 +34,7 @@ const JobList = () => {
       });
 
       const response = await axios.get(
-        `http://localhost:3001/api/jobs?${params}`,
+        `https://jobportal-995j.onrender.com/api/jobs?${params}`,
       );
       setJobs(response.data.jobs || []);
     } catch (error) {
@@ -73,7 +73,9 @@ const JobList = () => {
               </button>
               <div>
                 <h1 className="text-3xl font-bold text-white">Job Portal</h1>
-                <p className="text-blue-100">Explore all available opportunities</p>
+                <p className="text-blue-100">
+                  Explore all available opportunities
+                </p>
               </div>
             </div>
             <div className="text-right">
@@ -228,7 +230,8 @@ const JobList = () => {
               No jobs found
             </h3>
             <p className="text-gray-600 mb-6 max-w-md">
-              Try adjusting your search terms or filters to find more opportunities
+              Try adjusting your search terms or filters to find more
+              opportunities
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}

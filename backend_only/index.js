@@ -25,7 +25,7 @@ app.use(express.json());
 // Production: Frontend deployed URL
 const allowedOrigins = [
   "http://localhost:5173", // Development frontend
-  "http://localhost:3000", // Alternative dev port
+  "https://jobportal-995j.onrender.com", // Alternative dev port
   process.env.FRONTEND_URL || "", // Production frontend URL from environment
 ].filter(Boolean); // Remove empty strings
 

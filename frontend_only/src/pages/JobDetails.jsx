@@ -28,7 +28,9 @@ const JobDetails = () => {
   const fetchJobDetails = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3001/api/jobs/${id}`);
+      const response = await axios.get(
+        `https://jobportal-995j.onrender.com/api/jobs/${id}`,
+      );
       console.log("Job details response:", response.data);
       if (response.data && response.data._id) {
         setJob(response.data);
@@ -133,7 +135,7 @@ const JobDetails = () => {
             <div className="flex-shrink-0">
               {job.companyLogo ? (
                 <img
-                  src={`http://localhost:3001/uploads/${job.companyLogo}`}
+                  src={`https://jobportal-995j.onrender.com/uploads/${job.companyLogo}`}
                   alt={job.company}
                   className="w-20 h-20 rounded-xl object-cover"
                 />

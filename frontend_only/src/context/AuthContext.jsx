@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
           if (decoded.exp * 1000 > Date.now()) {
             // Token is still valid, fetch user profile from backend
             const response = await axios.get(
-              "http://localhost:3001/api/auth/profile",
+              "https://jobportal-995j.onrender.com/api/auth/profile",
               {
                 headers: { Authorization: `Bearer ${token}` },
               },
@@ -115,7 +115,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // Send login request to backend
       const response = await axios.post(
-        "http://localhost:3001/api/auth/login",
+        "https://jobportal-995j.onrender.com/api/auth/login",
         {
           email,
           password,
@@ -161,7 +161,7 @@ export const AuthProvider = ({ children }) => {
     try {
       // Send registration request to backend
       const response = await axios.post(
-        "http://localhost:3001/api/auth/register",
+        "https://jobportal-995j.onrender.com/api/auth/register",
         {
           name,
           email,
@@ -221,7 +221,7 @@ export const AuthProvider = ({ children }) => {
 
       // Send update request to backend
       const response = await axios.put(
-        "http://localhost:3001/api/auth/profile",
+        "https://jobportal-995j.onrender.com/api/auth/profile",
         updates,
         {
           headers: { Authorization: `Bearer ${token}` },

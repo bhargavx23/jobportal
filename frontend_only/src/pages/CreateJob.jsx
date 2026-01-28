@@ -71,7 +71,7 @@ const CreateJob = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:3001/api/jobs",
+        "https://jobportal-995j.onrender.com/api/jobs",
         submitData,
         {
           headers: {

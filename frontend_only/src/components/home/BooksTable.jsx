@@ -46,7 +46,7 @@ const BooksTable = ({ books }) => {
                   <div className="flex items-center gap-2 sm:gap-4">
                     {book.image ? (
                       <motion.img
-                        src={`http://localhost:3001/uploads/${book.image}`}
+                        src={`https://jobportal-995j.onrender.com/uploads/${book.image}`}
                         alt={book.title}
                         className="w-10 h-14 sm:w-14 sm:h-20 object-cover rounded-lg shadow-lg"
                         whileHover={{ scale: 1.05 }}

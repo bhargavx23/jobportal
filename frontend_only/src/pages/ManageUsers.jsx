@@ -43,7 +43,7 @@ const ManageUsers = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:3001/api/admin/users?limit=1000",
+        "https://jobportal-995j.onrender.com/api/admin/users?limit=1000",
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -80,9 +80,12 @@ const ManageUsers = () => {
   const handleDeleteUser = async (userId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3001/api/admin/users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://jobportal-995j.onrender.com/api/admin/users/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
 
       setUsers(users.filter((user) => user._id !== userId));
       setDeleteConfirm(null);

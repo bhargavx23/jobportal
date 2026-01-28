@@ -52,7 +52,7 @@ const JobCard = ({ job }) => {
             <div className="flex items-center gap-4">
               {job.companyLogo ? (
                 <img
-                  src={`http://localhost:3001/uploads/${job.companyLogo}`}
+                  src={`https://jobportal-995j.onrender.com/uploads/${job.companyLogo}`}
                   alt={job.company}
                   className="w-16 h-16 rounded-2xl object-cover shadow-lg ring-2 ring-teal-500/20 group-hover:ring-teal-400/40 transition-all duration-300"
                 />
