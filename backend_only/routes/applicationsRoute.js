@@ -189,6 +189,25 @@ router.post("/", authenticate, upload.single("resume"), async (req, res) => {
       additionalInfo,
     } = req.body;
 
+    // Validate required fields
+    if (!jobId) {
+      return res.status(400).json({ message: "jobId is required" });
+    }
+
+    if (!coverLetter) {
+      return res.status(400).json({ message: "coverLetter is required" });
+    }
+
+    // Validate that user is authenticated
+    if (!req.user || !req.user._id) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
+
+    // Validate jobId is a valid MongoDB ObjectId
+    if (!jobId.match(/^[0-9a-fA-F]{24}$/)) {
+      return res.status(400).json({ message: "Invalid jobId format" });
+    }
+
     // Check if the job exists
     const job = await Job.findById(jobId);
     if (!job) {
@@ -243,8 +262,24 @@ router.post("/", authenticate, upload.single("resume"), async (req, res) => {
       application,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error.message });
+    console.error("Application creation error:", error);
+
+    // Handle MongoDB duplicate key errors
+    if (error.code === 11000) {
+      return res
+        .status(400)
+        .json({ message: "You have already applied for this job" });
+    }
+
+    // Handle validation errors
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors)
+        .map((err) => err.message)
+        .join(", ");
+      return res.status(400).json({ message: `Validation error: ${messages}` });
+    }
+
+    res.status(500).json({ message: error.message || "Internal server error" });
   }
 });
 
