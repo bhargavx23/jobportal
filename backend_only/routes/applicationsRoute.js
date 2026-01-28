@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 import { Application } from "../models/applicationModel.js";
 import { Job } from "../models/jobModel.js";
 import { authenticate, authorize } from "../middleware/auth.js";
@@ -208,25 +209,30 @@ router.post("/", authenticate, upload.single("resume"), async (req, res) => {
       return res.status(400).json({ message: "Invalid jobId format" });
     }
 
+    // Ensure jobId is a proper ObjectId instance
+    const jobObjectId = new mongoose.Types.ObjectId(jobId);
+
     // Check if the job exists
-    const job = await Job.findById(jobId);
+    const job = await Job.findById(jobObjectId);
     if (!job) {
       return res.status(404).json({ message: "Job not found" });
     }
 
     // Check if user already applied to this job (prevent duplicates)
     const existingApplication = await Application.findOne({
-      job: jobId,
+      job: jobObjectId,
       applicant: req.user._id,
     });
 
     if (existingApplication) {
-      return res.status(400).json({ message: "Already applied for this job" });
+      return res
+        .status(400)
+        .json({ message: "You have already applied for this job" });
     }
 
     // Create new application document
     const application = await Application.create({
-      job: jobId,
+      job: jobObjectId,
       applicant: req.user._id,
       coverLetter,
       resume: req.file ? req.file.filename : null,
@@ -240,7 +246,7 @@ router.post("/", authenticate, upload.single("resume"), async (req, res) => {
 
     // Increment the application count for the job
     const updatedJob = await Job.findByIdAndUpdate(
-      jobId,
+      jobObjectId,
       { $inc: { applicationCount: 1 } },
       { new: true },
     );
