@@ -33,7 +33,7 @@ const UserDashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://jobportal-995j.onrender.com/api/applications/my-applications",
+        `${import.meta.env.VITE_API_BASE_URL}/api/applications/my-applications`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },

@@ -68,7 +68,7 @@ export default function AdminDashboard() {
 
         // Fetch all jobs
         const jobsRes = await axios.get(
-          "https://jobportal-995j.onrender.com/api/admin/jobs?limit=1000",
+          `${import.meta.env.VITE_API_BASE_URL}/api/admin/jobs?limit=1000`,
           {
             headers: token ? { Authorization: `Bearer ${token}` } : {},
           },
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
         let usersData = [];
         try {
           const usersRes = await axios.get(
-            "https://jobportal-995j.onrender.com/api/admin/users?limit=1000",
+            `${import.meta.env.VITE_API_BASE_URL}/api/admin/users?limit=1000`,
             {
               headers: token ? { Authorization: `Bearer ${token}` } : {},
             },
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
         let applicationsData = [];
         try {
           const applicationsRes = await axios.get(
-            "https://jobportal-995j.onrender.com/api/admin/applications",
+            `${import.meta.env.VITE_API_BASE_URL}/api/admin/applications`,
             {
               headers: token ? { Authorization: `Bearer ${token}` } : {},
             },
@@ -139,7 +139,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://jobportal-995j.onrender.com/api/jobs/${jobId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/jobs/${jobId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://jobportal-995j.onrender.com/api/admin/applications/${applicationId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/admin/applications/${applicationId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -193,7 +193,7 @@ export default function AdminDashboard() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://jobportal-995j.onrender.com/api/admin/applications/${applicationId}/status`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/admin/applications/${applicationId}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },

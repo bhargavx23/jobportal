@@ -29,7 +29,7 @@ const JobDetails = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://jobportal-995j.onrender.com/api/jobs/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/jobs/${id}`,
       );
       console.log("Job details response:", response.data);
       if (response.data && response.data._id) {

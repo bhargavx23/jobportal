@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://jobportal-995j.onrender.com/api/jobs")
+      .get(`${import.meta.env.VITE_API_BASE_URL}/api/jobs`)
       .then((response) => {
         const jobsData =
           response.data.data || response.data.jobs || response.data;

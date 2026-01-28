@@ -59,7 +59,7 @@ const ReviewJobApplications = () => {
 
       // Fetch applications for this job
       const appResponse = await axios.get(
-        `https://jobportal-995j.onrender.com/api/applications/job/${jobId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/applications/job/${jobId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },

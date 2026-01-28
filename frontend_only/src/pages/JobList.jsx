@@ -34,7 +34,7 @@ const JobList = () => {
       });
 
       const response = await axios.get(
-        `https://jobportal-995j.onrender.com/api/jobs?${params}`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/jobs?${params}`,
       );
       setJobs(response.data.jobs || []);
     } catch (error) {

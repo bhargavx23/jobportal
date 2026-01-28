@@ -45,7 +45,7 @@ const ReviewApplications = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://jobportal-995j.onrender.com/api/admin/applications",
+        `${import.meta.env.VITE_API_BASE_URL}/api/admin/applications`,
         {
           headers: { Authorization: `Bearer ${token}` },
         },
@@ -86,7 +86,7 @@ const ReviewApplications = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://jobportal-995j.onrender.com/api/applications/${applicationId}/status`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/applications/${applicationId}/status`,
         { status: newStatus },
         {
           headers: { Authorization: `Bearer ${token}` },
