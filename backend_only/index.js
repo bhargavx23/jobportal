@@ -25,6 +25,7 @@ app.use(express.json());
 // Production: Frontend deployed URL
 const allowedOrigins = [
   "http://localhost:5173", // Development frontend
+  "https://graceful-sfogliatella-193793.netlify.app", // Production frontend
   process.env.FRONTEND_URL || "", // Production frontend URL from environment
 ].filter(Boolean); // Remove empty strings
 
