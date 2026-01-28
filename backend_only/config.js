@@ -1,6 +1,6 @@
 // Server port configuration - defines which port the backend will listen on
 // For production on Render, PORT is automatically assigned
-export const PORT = process.env.PORT || 3001;
+export const PORT = process.env.PORT || 'https://jobportal-995j.onrender.com';
 
 // MongoDB connection URL - Use environment variable for security
 // Format: mongodb+srv://username:password@cluster.mongodb.net/dbname?retryWrites=true&w=majority
