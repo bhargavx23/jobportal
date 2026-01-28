@@ -220,9 +220,17 @@ router.post("/", authenticate, upload.single("resume"), async (req, res) => {
     });
 
     // Increment the application count for the job
-    await Job.findByIdAndUpdate(jobId, {
-      $inc: { applicationCount: 1 },
-    });
+    const updatedJob = await Job.findByIdAndUpdate(
+      jobId,
+      { $inc: { applicationCount: 1 } },
+      { new: true },
+    );
+
+    if (!updatedJob) {
+      // If job update fails, delete the created application to maintain consistency
+      await Application.findByIdAndDelete(application._id);
+      return res.status(404).json({ message: "Job not found during update" });
+    }
 
     // Populate related data before returning
     await application.populate([
